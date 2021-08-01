@@ -7,9 +7,8 @@ const User = require('../models/User');
 exports.signup = (req, res, next) => {
 
   //Cryptage de l'email
-  var key = CryptoJS.enc.Hex.parse("000102030405060708090a0b0c0d0e0f");
-  var iv = CryptoJS.enc.Hex.parse("101112131415161718191a1b1c1d1e1f");
-  var encrypted = CryptoJS.AES.encrypt(req.body.email, key, { iv: iv }).toString();
+  
+  var encrypted = CryptoJS.MD5(req.body.email).toString();
 
   //chiffrage du mot de passe
   bcrypt.hash(req.body.password, 10)
@@ -29,10 +28,10 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-  var key = CryptoJS.enc.Hex.parse("000102030405060708090a0b0c0d0e0f");
-  var iv = CryptoJS.enc.Hex.parse("101112131415161718191a1b1c1d1e1f");
-  var encrypted = CryptoJS.AES.encrypt(req.body.email, key, { iv: iv }).toString();
-
+ 
+  var encrypted = CryptoJS.MD5(req.body.email).toString();
+console.log(req.body.email);
+console.log(encrypted);
   User.findOne({ email: encrypted })
     .then(user => {
       if (!user) {

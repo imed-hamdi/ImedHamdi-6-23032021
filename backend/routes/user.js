@@ -1,12 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
 const userCtrl = require('../controllers/user');
-
-const signupValidity = require('../middleware/signupValidity');
-
-
-router.post('/signup', signupValidity, userCtrl.signup);
-router.post('/login', userCtrl.login);
-
+const ValidityUSer = require('../middleware/ValidityUSer');
+router.post('/signup', ValidityUSer, userCtrl.signup);
+router.post('/login', ValidityUSer, userCtrl.login);
 module.exports = router;

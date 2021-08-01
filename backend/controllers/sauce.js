@@ -2,7 +2,7 @@ const Sauce = require('../models/Sauce');
 const fs = require('fs');
 
 exports.createSauce = (req, res, next) => {
-  const sauceObject = req.body.sauce;
+  const sauceObject = JSON.parse(req.body.sauce);
   delete sauceObject._id;
   const sauce = new Sauce({
     ...sauceObject,
@@ -59,7 +59,7 @@ exports.getAllSauces = (req, res, next) => {
 };
 
 
-// Permet de "liker"ou "dislaker" une sauce
+// Permet de "liker"ou "disliker" une sauce
 
 exports.likeDislike = (req, res, next) => {
   // Pour la route READ = Ajout/suppression d'un like / dislike à une sauce
