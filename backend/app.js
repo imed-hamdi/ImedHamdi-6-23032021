@@ -4,6 +4,7 @@ const mongoose = require('mongoose'); // Permet de définir des objets avec un s
 const path = require('path');
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
+const helmet = require("helmet");
 
 mongoose.connect('mongodb+srv://imed-hamdi77:Djerba68@cluster0.eynx0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   {
@@ -14,6 +15,7 @@ mongoose.connect('mongodb+srv://imed-hamdi77:Djerba68@cluster0.eynx0.mongodb.net
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 const app = express();
+app.use(helmet());
 
 //Eviter les erreurs CORS
 app.use((req, res, next) => {
@@ -23,7 +25,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/sauces', sauceRoutes);
 app.use('/api/auth', userRoutes);

@@ -14,7 +14,7 @@ module.exports = (req, res, next) => {
     : { ...req.body };
 
   //Vérification champs formulaire
-
+ 
   const regexName = /[a-zA-Z áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ-]{3,20}/; // a utilisé pour le nom de la sauce et le créateur
   let testName = regexName.test(sauceObjectModify.name)
   if (!testName) return res.status(400).json('test Name failed') //si ca va pas en stope le script et on return une erreur 
