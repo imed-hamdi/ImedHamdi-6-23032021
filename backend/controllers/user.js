@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const CryptoJS = require('crypto-js');
-
 const User = require('../models/User');
 
 exports.signup = (req, res, next) => {
@@ -30,8 +29,6 @@ exports.signup = (req, res, next) => {
 exports.login = (req, res, next) => {
  
   var encrypted = CryptoJS.MD5(req.body.email).toString();
-console.log(req.body.email);
-console.log(encrypted);
   User.findOne({ email: encrypted })
     .then(user => {
       if (!user) {
