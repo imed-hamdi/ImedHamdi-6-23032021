@@ -5,8 +5,8 @@ const path = require('path');
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 const helmet = require("helmet");
-
-mongoose.connect('mongodb+srv://imed-hamdi77:Djerba68@cluster0.eynx0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+const Data_Base= require('./DB_pass');
+mongoose.connect(`${Data_Base}`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true

@@ -1,8 +1,8 @@
 ## Piquante
-
+Cloner le dossier , executer npm install , puis installer angular et les packages nécessaires..
 Le projet a été généré avec [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
+Pour faire fonctionner le projet, vous devez installer node-sass à part. version 4.0
 
-Pour faire fonctionner le projet, vous devez installer node-sass à part.
 
 ## Development server
 
